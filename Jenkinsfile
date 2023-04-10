@@ -11,5 +11,11 @@ pipeline {
                 sh 'docker build -t check:v1 .'
             }
         }
+        stage ('docker run'){
+            steps {
+                sh 'docker rm -f $(docker ps -a -q)'
+                sh 'docker run -it -d 8090:8080 check:v1'
+            }
+        }
     }
 }

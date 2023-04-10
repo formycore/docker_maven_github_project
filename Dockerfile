@@ -1,10 +1,10 @@
 FROM alpine/git as clone
 WORKDIR /app
-RUN git clone https://github.com/ravdy/hello-world.git
+RUN git clone https://github.com/formycore/valaxy.git
 
 FROM maven:3.5-jdk-11-slim as build
 WORKDIR /app
-COPY --from=clone /app/hello-world /app/
+COPY --from=clone /app/valaxy /app/
 RUN mvn install
 
 # /webapp/target/webapp.war
