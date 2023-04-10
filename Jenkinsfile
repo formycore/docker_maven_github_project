@@ -3,7 +3,7 @@ pipeline {
     stages{
         stage ('Git clone') {
             steps {
-                git 'https://github.com/ravdy/hello-world.git'
+                git 'https://github.com/formycore/docker_maven_github_project.git'
             }
         }
         stage ('docker build'){
