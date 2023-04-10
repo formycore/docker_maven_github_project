@@ -14,7 +14,7 @@ pipeline {
         stage ('docker run'){
             steps {
                 // sh 'docker rm -f $(docker ps -a -q)'
-                sh 'docker run -it -d -p 8090:8080 check:v1'
+                sh 'docker run -it -d -p 8070:8080 check:v1'
             }
         }
     }
