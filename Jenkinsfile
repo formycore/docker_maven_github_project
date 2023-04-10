@@ -7,7 +7,9 @@ pipeline {
             }
         }
         stage ('docker build'){
-            sh 'docker build -t check:v1 .'
+            steps {
+                sh 'docker build -t check:v1 .'
+            }
         }
     }
 }
