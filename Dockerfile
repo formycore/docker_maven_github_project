@@ -4,7 +4,7 @@ RUN git clone https://github.com/formycore/docker_pipeline_valaxy.git
 
 FROM maven:3.5-jdk-11-slim as build
 WORKDIR /app
-COPY --from=clone /app/valaxy /app/
+COPY --from=clone /app/docker_pipeline_valaxy /app/
 RUN mvn install
 
 # /webapp/target/webapp.war
