@@ -8,14 +8,15 @@ pipeline {
         }
         stage ('docker build'){
             steps {
-                sh 'docker build -t check:v1 .'
+                // sh 'docker build -t check:v1 .'
+                sh 'docker image build -t $JOB_NAME:v1.$BUILD_ID .'
             }
         }
-        stage ('docker run'){
-            steps {
-                // sh 'docker rm -f $(docker ps -a -q)'
-                sh 'docker run -it -d -p 8060:8080 check:v1'
-            }
+        stage ('Docker Push') {
+            withCredentials([usernamePassword(credentialsId: 'dockerid', passwordVariable: 'password', usernameVariable: 'username')]) {
+                sh "docker login -u ${username} -p ${password}"
+                sh "docker image push formycore/$JOB_NAME:v1.$BUILD_ID"
+}
         }
     }
 }
