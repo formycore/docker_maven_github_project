@@ -13,10 +13,12 @@ pipeline {
             }
         }
         stage ('Docker Push') {
+            steps {
             withCredentials([usernamePassword(credentialsId: 'dockerid', passwordVariable: 'password', usernameVariable: 'username')]) {
                 sh "docker login -u ${username} -p ${password}"
                 sh "docker image push formycore/$JOB_NAME:v1.$BUILD_ID"
 }
+            }
         }
     }
 }
