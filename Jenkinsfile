@@ -19,7 +19,7 @@ pipeline {
             withCredentials([usernamePassword(credentialsId: 'dockerid', passwordVariable: 'password', usernameVariable: 'username')]) {
                 sh "docker login -u ${username} -p ${password}"
                 sh "docker image push formycore/$JOB_NAME:v1.$BUILD_ID"
-                //sh "docker rmi $JOB_NAME:v1.$BUILD_ID formycore/$JOB_NAME:latest formycore/$JOB_NAME:v1.$BUILD_ID"
+                sh "docker rmi $JOB_NAME:v1.$BUILD_ID formycore/$JOB_NAME:latest formycore/$JOB_NAME:v1.$BUILD_ID"
 }
             }
         }
