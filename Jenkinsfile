@@ -23,10 +23,13 @@ pipeline {
 }
             }
         }
-        // stage('Docker Deployment'){
-        //     steps {
-        //         sh "docker run -itd --name webserver -p 8090:8080 formycore/"
-        //     }
-        // }
+        stage('Docker Deployment'){
+            steps {
+                sh 'docker rm -f webserver'
+                sh 'docker rmi -f formycore/dockerfile_maven_github_1'
+                sh 'docker run -itd --name webserver -p 8090:8080 formycore/dockerfile_maven_github_1'
+                
+            }
+        }
     }
 }
