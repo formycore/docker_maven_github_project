@@ -1,6 +1,6 @@
 FROM alpine/git as clone
 WORKDIR /app
-RUN git clone https://github.com/formycore/valaxy.git
+RUN git clone https://github.com/formycore/docker_pipeline_valaxy.git
 
 FROM maven:3.5-jdk-11-slim as build
 WORKDIR /app
