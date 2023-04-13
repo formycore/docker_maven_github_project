@@ -1,0 +1,4 @@
+docker buildx build --build-arg url=https://github.com/formycore/docker_pipeline_valaxy.git\
+                    --build-arg project=docker_pipeline_valaxy  \
+                    --build-arg artifact=webapp \
+                    -t mywebapp .
